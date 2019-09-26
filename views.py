@@ -16,6 +16,7 @@ def hello(world: dict) -> str:
     """
     return GAME_HEADER+"""You are in the Lair of the Corgis.<br>
     
+    <a href="/house/">Go to house</a><br>
     <a href="goto/lair">Go further into the lair.</a><br>
     <a href="goto/entrance">Retreat.</a>"""
 
@@ -35,6 +36,10 @@ What is its name?
     <input type="submit" value="Submit"><br>
 </form>
 """
+
+@simple_route('/house/')
+def house(world:dict)->str:
+    return "<img src='/static/house image.jpeg'>"
 
 
 @simple_route('/goto/<where>/')
