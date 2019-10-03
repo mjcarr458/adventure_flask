@@ -1,8 +1,8 @@
 from route_helper import simple_route
 
 GAME_HEADER = """
-<h1>Welcome to adventure quest!</h1>
-<p>At any time you can <a href='/reset/'>reset</a> your game.</p>
+<h1>Welcome to the Haunted House!</h1>
+<p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
 """
 
 
@@ -14,12 +14,10 @@ def hello(world: dict) -> str:
     :param world: The current world
     :return: The HTML to show the player
     """
-    return GAME_HEADER+"""You are in the Lair of the Corgis.<br>
-    
-    <a href="/house/">Go to house</a><br>
-    <a href="goto/lair">Go further into the lair.</a><br>
-    <a href="goto/entrance">Retreat.</a>"""
-
+    return GAME_HEADER+"""You are in front of the haunted house.<br>
+    <img src='/static/house_front.png'><br>
+    <a href="/room_1/">Click here if you dare to enter</a><br>
+"""
 
 ENCOUNTER_MONSTER = """
 <!-- Curly braces let us inject values into the string -->
@@ -37,10 +35,29 @@ What is its name?
 </form>
 """
 
-@simple_route('/house/')
-def house(world:dict)->str:
-    return "<img src='/static/house image.jpeg'>"
 
+@simple_route('/room_1/')
+def house(world:dict)->str:
+    return """
+    <img src='/static/witch_lair.jpg'><br>
+    <a href="/witch/">Do you want to keep investigating the room?</a><br>
+    <a href="/room_2/">Do you want to move into the next room?</a>
+"""
+
+@simple_route('/witch/')
+def witch(world:dict)->str:
+    return """
+    <h1> The Witch has appeared!<h1><br>
+    <img src='/static/witch.jpg'><br>
+    <a href="/room_2/">Quick run away!</a>
+    """
+
+@simple_route('/room_2/')
+def room_2(world:dict)->str:
+    return """"
+    <h1>You've interrupted the skeletons' dance party!</h1><br>
+    <img src='/static/dancing_skeletons.gif'><br>
+    """
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:
