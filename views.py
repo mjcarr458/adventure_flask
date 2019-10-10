@@ -1,10 +1,11 @@
+from flask import render_template
+
 from route_helper import simple_route
 
 GAME_HEADER = """
-<h1>Welcome to the Haunted House!</h1>
-<p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
 """
-
+name = """
+"""
 
 @simple_route('/')
 def hello(world: dict) -> str:
@@ -14,10 +15,9 @@ def hello(world: dict) -> str:
     :param world: The current world
     :return: The HTML to show the player
     """
-    return GAME_HEADER+"""You are in front of the haunted house.<br>
-    <img src='/static/house_front.png'><br>
-    <a href="/room_1/">Click here if you dare to enter</a><br>
-"""
+    return render_template("Game_header.html")+render_template("index.html")
+    
+
 
 ENCOUNTER_MONSTER = """
 <!-- Curly braces let us inject values into the string -->
@@ -39,25 +39,39 @@ What is its name?
 @simple_route('/room_1/')
 def house(world:dict)->str:
     return """
+    <h1> You have entered the witch's lair<h1><br>
     <img src='/static/witch_lair.jpg'><br>
     <a href="/witch/">Do you want to keep investigating the room?</a><br>
-    <a href="/room_2/">Do you want to move into the next room?</a>
+    <a href="/skeleton_room/">Do you want to move into the next room?</a>
 """
 
 @simple_route('/witch/')
-def witch(world:dict)->str:
+def witch(world:dict) -> str:
+    world["hat"] = True
     return """
     <h1> The Witch has appeared!<h1><br>
     <img src='/static/witch.jpg'><br>
-    <a href="/room_2/">Quick run away!</a>
+    <p>You found the witch's hat<p><br>
+    <a href="/skeleton_room/">Quick run away!</a>
     """
 
-@simple_route('/room_2/')
-def room_2(world:dict)->str:
+@simple_route('/skeleton_room/')
+def room_2(world:dict) -> str:
     return """"
     <h1>You've interrupted the skeletons' dance party!</h1><br>
     <img src='/static/dancing_skeletons.gif'><br>
+    <a href="/skeleton_party/">Join in on the party!</a>
     """
+@simple_route("/skeleton_party/")
+def dance_party(world:dict) -> str:
+    world["skeleton_hand"] = True
+    return """"
+    <img src='/static/skeleton_hand.html><br>
+    
+    
+    """
+
+
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:
