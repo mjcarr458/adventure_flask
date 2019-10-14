@@ -16,7 +16,7 @@ def hello(world: dict) -> str:
     :param world: The current world
     :return: The HTML to show the player
     """
-    return render_template("index.html")
+    return render_template("index.html", world = world)
     
 
 ENCOUNTER_MONSTER = """
@@ -38,50 +38,50 @@ What is its name?
 
 @simple_route('/room_1/')
 def house(world:dict) -> str:
-    return render_template("Game_header.html",world = world) + render_template("Witch_lair.html")
+    return render_template("Witch_lair.html", world = world)
 
 
 @simple_route('/witch/')
 def witch(world: dict) -> str:
     world["hat"] = True
-    return render_template("Game_header.html",world = world) + render_template("Witch.html")
+    return render_template("Witch.html", world = world)
 
 
 @simple_route('/skeleton_room/')
 def room_2(world:dict) -> str:
-    return render_template("Game_header.html",world = world ) + render_template("skeleton_room.html")
+    return render_template("skeleton_room.html", world = world)
 
 
 @simple_route("/skeleton_party/")
 def dance_party(world:dict) -> str:
     world["hand"] = True
-    return render_template("Game_header.html",world = world) + render_template("skeleton_party.html")
+    return render_template("skeleton_party.html", world = world)
 
 
 @simple_route("/vampire_coffin/")
 def vampire_coffin(world:dict) -> str:
-    return render_template("Game_header.html",world = world) + render_template("Vampire_coffin.html")
+    return render_template("Vampire_coffin.html", world = world)
 
 
 @simple_route("/vampire/")
 def vampire(world:dict) -> str:
     world["cape"] = True
     print(world)
-    return render_template("Game_header.html", world = world) + render_template("Vampire.html")
+    return render_template("Vampire.html", world = world)
 
 
 @simple_route("/door/")
 def door(world:dict) -> str:
-    return render_template("Game_header.html", world=world) + render_template("Door.html")
+    return render_template("Door.html", world = world)
 
 
 @simple_route("/ghost/")
 def ghost(world:dict) -> str:
-    return render_template("Game_header.html", world = world) + render_template("Ghost.html")
+    return render_template("Ghost.html", world = world)
 
 @simple_route("/exit/")
 def exit(world:dict) -> str:
-    return render_template("Game_header.html", world = world) + render_template("Exit.html")
+    return render_template("Exit.html", world = world)
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:

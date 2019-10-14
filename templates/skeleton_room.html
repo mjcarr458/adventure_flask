@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
- <h1>You've interrupted the skeletons' dance party!</h1><br>
+{% extends"Game_header.html" %}
+{% block content %}
+<h1>You've interrupted the skeletons' dance party!</h1><br>
     <img src='/static/dancing_skeletons.gif'><br>
     <a href="/skeleton_party/">Join in on the party!</a><br>
     <a href="/vampire_coffin/">Keep walking by</a>
-</body>
-</html>
+{% endblock %}

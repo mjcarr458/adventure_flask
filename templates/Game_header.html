@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
 <h1>Welcome to the Haunted House!</h1>
 <p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
 <p> Inventory:</p>
@@ -17,5 +11,4 @@
 {% if world["cape"] %}
     <p> Vampire cape</p>
 {% endif %}
-</body>
-</html>
+{% block content %} {% endblock %}
