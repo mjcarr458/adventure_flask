@@ -43,6 +43,7 @@ def house(world:dict) -> str:
 
 @simple_route('/witch/')
 def witch(world: dict) -> str:
+    world["hat"] = True
     return render_template("Game_header.html",world = world) + render_template("Witch.html")
 
 
@@ -53,6 +54,7 @@ def room_2(world:dict) -> str:
 
 @simple_route("/skeleton_party/")
 def dance_party(world:dict) -> str:
+    world["hand"] = True
     return render_template("Game_header.html",world = world) + render_template("skeleton_party.html")
 
 

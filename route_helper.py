@@ -13,7 +13,9 @@ from flask import request, session, redirect
 
 from app import app
 
-INITIAL_WORLD = {"cape": False
+INITIAL_WORLD = {"cape": False,
+                 "hat": False,
+                 "hand": False,
                  }
 
 

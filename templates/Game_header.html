@@ -7,8 +7,15 @@
 <body>
 <h1>Welcome to the Haunted House!</h1>
 <p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
+<p> Inventory:</p>
+{% if world["hat"] %}
+    <p> Witch's hat</p>
+{% endif %}
+{% if world["hand"] %}
+    <p> Skeleton's hand</p>
+{% endif %}
 {% if world["cape"] %}
-    <p> You have the vampire's cape</p>
+    <p> Vampire cape</p>
 {% endif %}
 </body>
 </html>
