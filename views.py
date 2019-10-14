@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, session
 
 from route_helper import simple_route
 
@@ -6,6 +6,7 @@ GAME_HEADER = """
 """
 name = """
 """
+
 
 @simple_route('/')
 def hello(world: dict) -> str:
@@ -15,9 +16,8 @@ def hello(world: dict) -> str:
     :param world: The current world
     :return: The HTML to show the player
     """
-    return render_template("Game_header.html")+render_template("index.html")
+    return render_template("index.html")
     
-
 
 ENCOUNTER_MONSTER = """
 <!-- Curly braces let us inject values into the string -->
@@ -37,41 +37,49 @@ What is its name?
 
 
 @simple_route('/room_1/')
-def house(world:dict)->str:
-    return """
-    <h1> You have entered the witch's lair<h1><br>
-    <img src='/static/witch_lair.jpg'><br>
-    <a href="/witch/">Do you want to keep investigating the room?</a><br>
-    <a href="/skeleton_room/">Do you want to move into the next room?</a>
-"""
+def house(world:dict) -> str:
+    return render_template("Game_header.html",world = world) + render_template("Witch_lair.html")
+
 
 @simple_route('/witch/')
-def witch(world:dict) -> str:
-    world["hat"] = True
-    return """
-    <h1> The Witch has appeared!<h1><br>
-    <img src='/static/witch.jpg'><br>
-    <p>You found the witch's hat<p><br>
-    <a href="/skeleton_room/">Quick run away!</a>
-    """
+def witch(world: dict) -> str:
+    return render_template("Game_header.html",world = world) + render_template("Witch.html")
+
 
 @simple_route('/skeleton_room/')
 def room_2(world:dict) -> str:
-    return """"
-    <h1>You've interrupted the skeletons' dance party!</h1><br>
-    <img src='/static/dancing_skeletons.gif'><br>
-    <a href="/skeleton_party/">Join in on the party!</a>
-    """
+    return render_template("Game_header.html",world = world ) + render_template("skeleton_room.html")
+
+
 @simple_route("/skeleton_party/")
 def dance_party(world:dict) -> str:
-    world["skeleton_hand"] = True
-    return """"
-    <img src='/static/skeleton_hand.html><br>
-    
-    
-    """
+    return render_template("Game_header.html",world = world) + render_template("skeleton_party.html")
 
 
+@simple_route("/vampire_coffin/")
+def vampire_coffin(world:dict) -> str:
+    return render_template("Game_header.html",world = world) + render_template("Vampire_coffin.html")
+
+
+@simple_route("/vampire/")
+def vampire(world:dict) -> str:
+    world["cape"] = True
+    print(world)
+    return render_template("Game_header.html", world = world) + render_template("Vampire.html")
+
+
+@simple_route("/door/")
+def door(world:dict) -> str:
+    return render_template("Game_header.html", world=world) + render_template("Door.html")
+
+
+@simple_route("/ghost/")
+def ghost(world:dict) -> str:
+    return render_template("Game_header.html", world = world) + render_template("Ghost.html")
+
+@simple_route("/exit/")
+def exit(world:dict) -> str:
+    return render_template("Game_header.html", world = world) + render_template("Exit.html")
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:

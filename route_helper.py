@@ -13,7 +13,8 @@ from flask import request, session, redirect
 
 from app import app
 
-INITIAL_WORLD = {}
+INITIAL_WORLD = {"cape": False
+                 }
 
 
 def simple_route(path: str, **options):
@@ -48,6 +49,6 @@ def reset():
     the root page.
     :return: Redirection to '/'
     """
-    session['world'] = "{}"
+    session['world'] = json.dumps(INITIAL_WORLD)
     return redirect('/')
 

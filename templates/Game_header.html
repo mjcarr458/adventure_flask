@@ -7,5 +7,8 @@
 <body>
 <h1>Welcome to the Haunted House!</h1>
 <p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
+{% if world["cape"] %}
+    <p> You have the vampire's cape</p>
+{% endif %}
 </body>
 </html>
