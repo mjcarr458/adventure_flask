@@ -1,4 +1,4 @@
-from flask import render_template, session
+from flask import render_template, session, request
 
 from route_helper import simple_route
 
@@ -43,8 +43,28 @@ def house(world:dict) -> str:
 
 @simple_route('/witch/')
 def witch(world: dict) -> str:
-    world["hat"] = True
     return render_template("Witch.html", world = world)
+
+@simple_route("/witch_hat/")
+def hat(world: dict) -> str:
+    for item in world:
+        if item["name"] == "inventory spaces":
+            o_spots = item.get("spots")
+            n_spots = o_spots - 1
+            item["spots"] = n_spots
+    for item in world:
+        if item["name"] == "hat":
+            item["own"] = True
+    return render_template("witch_hat.html", world = world)
+
+@simple_route("/save_witch/")
+def witch_save(world: dict, *args)->str:
+    color = request.values.get("c_value")
+    for item in world:
+        if item["name"] == "hat":
+            item["color"] = color
+    print(request.form)
+    return render_template("skeleton_room.html", world = world)
 
 
 @simple_route('/skeleton_room/')
@@ -54,7 +74,14 @@ def room_2(world:dict) -> str:
 
 @simple_route("/skeleton_party/")
 def dance_party(world:dict) -> str:
-    world["hand"] = True
+    for item in world:
+        if item["name"] == "inventory spaces":
+            o_spots = item.get('spots')
+            n_spots = o_spots - 1
+            item["spots"] = n_spots
+    for item in world:
+        if item["name"] == "hand":
+            item["own"] = True
     return render_template("skeleton_party.html", world = world)
 
 
@@ -65,8 +92,14 @@ def vampire_coffin(world:dict) -> str:
 
 @simple_route("/vampire/")
 def vampire(world:dict) -> str:
-    world["cape"] = True
-    print(world)
+    for item in world:
+        if item["name"] == "inventory spaces":
+            o_spots = item.get("spots")
+            n_spots = o_spots - 1
+            item["spots"] = n_spots
+    for item in world:
+        if item["name"] == "cape":
+            item["own"] = True
     return render_template("Vampire.html", world = world)
 
 
@@ -81,7 +114,19 @@ def ghost(world:dict) -> str:
 
 @simple_route("/exit/")
 def exit(world:dict) -> str:
-    return render_template("Exit.html", world = world)
+    final_items = []
+    for item in world:
+        bool_test = item.get("own")
+        if bool_test:
+            final_items.append(item["name"])
+    if len(final_items) < 2:
+        return render_template("Not_enough.html")
+    if "hat" in final_items and "cape" in final_items:
+        return render_template("hat_cape_win.html")
+    elif "hat" in final_items and "hand" in final_items:
+        return render_template("hat_hand_win.html")
+    elif "cape" in final_items and "hand" in final_items:
+        return render_template("cape_hand_win.html")
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:

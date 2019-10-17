@@ -13,10 +13,14 @@ from flask import request, session, redirect
 
 from app import app
 
-INITIAL_WORLD = {"cape": False,
-                 "hat": False,
-                 "hand": False,
-                 }
+INITIAL_WORLD = \
+[
+    {"name": "inventory spaces", "spots": 2},
+    {"name": "cape", "own": False},
+    {"name": "hat", "own": False , "color": "N/A"},
+    {"name": "hand", "own": False},
+]
+
 
 
 def simple_route(path: str, **options):

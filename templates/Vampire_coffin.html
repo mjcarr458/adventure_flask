@@ -2,6 +2,11 @@
 {% block content %}
 <h3>You have found a coffin</h3>
 <img src ="/static/vampire_coffin.jpg")><br>
-<a href ="/vampire/">Look inside the coffin</a><br>
+    {% for item in world %}
+    {% if item["name"] == "inventory spaces" and item["spots"] > 0 %}
+    <a href ="/vampire/">Look inside the coffin and take the vampire's cape!</a>
+    or
+    {% endif %}
+    {% endfor %}
 <a href = "/door/">Move past it</a>
 {% endblock %}

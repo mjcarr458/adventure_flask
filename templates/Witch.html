@@ -2,5 +2,11 @@
 {% block content %}
 <h1> The Witch has appeared!</h1><br>
     <img src='/static/witch.jpg'><br>
+    {% for item in world %}
+    {% if item["name"] == "inventory spaces" and item["spots"] > 0 %}
+    <a href="/witch_hat/">Take the Witch's hat!</a>
+    or
+    {% endif %}
+    {% endfor %}
     <a href="/skeleton_room/">Quick run away!</a>
 {% endblock %}

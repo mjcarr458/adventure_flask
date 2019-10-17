@@ -2,6 +2,11 @@
 {% block content %}
 <h1>You've interrupted the skeletons' dance party!</h1><br>
     <img src='/static/dancing_skeletons.gif'><br>
-    <a href="/skeleton_party/">Join in on the party!</a><br>
+    {% for item in world %}
+    {% if item["name"] == "inventory spaces" and item["spots"] > 0 %}
+    <a href="/skeleton_party/">Join in on the party!</a>
+    or
+    {% endif %}
+    {% endfor %}
     <a href="/vampire_coffin/">Keep walking by</a>
 {% endblock %}

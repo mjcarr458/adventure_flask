@@ -2,13 +2,19 @@
 <h1>Welcome to the Haunted House!</h1>
 <p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
 <p> Inventory:</p>
-{% if world["hat"] %}
+{% for item in world %}
+    {% if item["name"] == "inventory spaces"%}
+    You Inventory has {{ item["spots"]}} spot(s) left!
+    {% endif %}
+    {% if item["name"] == "hat" and item["own"] %}
     <p> Witch's hat</p>
 {% endif %}
-{% if world["hand"] %}
+{% if item["name"] == "hand" and item["own"] %}
     <p> Skeleton's hand</p>
 {% endif %}
-{% if world["cape"] %}
+{% if item["name"] == "cape" and item["own"] %}
     <p> Vampire cape</p>
 {% endif %}
+{% endfor %}
+{{ world }}
 {% block content %} {% endblock %}

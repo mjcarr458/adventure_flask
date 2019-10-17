@@ -1,0 +1,13 @@
+{% extends "Game_header.html" %}
+{% block content %}
+<h2> You took the Witch's hat!</h2>
+<img src ="/static/Witch_hat.jpg"><br>
+<a href ="/save_witch/">Keep moving through the house!</a><br>
+<form action ="/save_witch/ ">
+    Color of hat:<br>
+   <select name = "c_value">
+   <option value ="blue" >Blue</option>
+   <option value ="red">Red</option>
+   </select>
+</form>
+{% endblock %}
