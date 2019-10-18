@@ -15,10 +15,11 @@ from app import app
 
 INITIAL_WORLD = \
 [
-    {"name": "inventory spaces", "spots": 2},
+    {"name": "quiz attempts", "attempts": 3},
     {"name": "cape", "own": False},
-    {"name": "hat", "own": False , "color": "N/A"},
+    {"name": "hat", "own": False},
     {"name": "hand", "own": False},
+    {"name": "witch quiz", "question 1": None,"question 2": None, "question 3": None}
 ]
 
 

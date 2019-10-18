@@ -48,41 +48,59 @@ def witch(world: dict) -> str:
 @simple_route("/witch_hat/")
 def hat(world: dict) -> str:
     for item in world:
-        if item["name"] == "inventory spaces":
-            o_spots = item.get("spots")
+        if item["name"] == "quiz attempts":
+            o_spots = item.get("attempts")
             n_spots = o_spots - 1
-            item["spots"] = n_spots
-    for item in world:
-        if item["name"] == "hat":
-            item["own"] = True
+            item["attempts"] = n_spots
     return render_template("witch_hat.html", world = world)
 
 @simple_route("/save_witch/")
 def witch_save(world: dict, *args)->str:
-    color = request.values.get("c_value")
+    q1 = request.values.get("question_1")
+    q2 = request.values.get("question_2")
+    q3 = request.values.get("question_3")
     for item in world:
-        if item["name"] == "hat":
-            item["color"] = color
-    print(request.form)
-    return render_template("skeleton_room.html", world = world)
+        if item["name"] == "witch quiz":
+            item["question 1"] = q1
+            item["question 2"] = q2
+            item["question 3"] = q3
+    if q1 == "Yes" and q2 == "Yes" and q3 == "No":
+        for item in world:
+            if item["name"] == "hat":
+                item["own"] = True
+        return render_template("witch_win.html", world = world)
+    else:
+        return render_template("witch_lose.html", world = world)
 
 
 @simple_route('/skeleton_room/')
-def room_2(world:dict) -> str:
+def room_2(world:dict, *args) -> str:
     return render_template("skeleton_room.html", world = world)
 
 
 @simple_route("/skeleton_party/")
-def dance_party(world:dict) -> str:
+def dance_party(world:dict, *args) -> str:
     for item in world:
-        if item["name"] == "inventory spaces":
-            o_spots = item.get('spots')
+        if item["name"] == "quiz attempts":
+            o_spots = item.get('attempts')
             n_spots = o_spots - 1
-            item["spots"] = n_spots
-    for item in world:
-        if item["name"] == "hand":
-            item["own"] = True
+            item["attempts"] = n_spots
     return render_template("skeleton_party.html", world = world)
+
+@simple_route("/save_skeleton/")
+def save_skeleton(world:dict, *args) -> str:
+    q1 = request.values.get("question_1")
+    q2 = request.values.get("question_2")
+    q3 = request.values.get("question_3")
+    if q1 == "Because they don't have any guts!" and q2 == "Sherlock Bones!" and q3 == "Spare 'ribs'!":
+        for item in world:
+            if item["name"] == "hand":
+                item["own"] = True
+        return render_template("skeleton_win.html",world = world)
+    else:
+        return render_template("skeleton_lose.html", world = world)
+
+
 
 
 @simple_route("/vampire_coffin/")
@@ -102,6 +120,11 @@ def vampire(world:dict) -> str:
             item["own"] = True
     return render_template("Vampire.html", world = world)
 
+@simple_route("/save_vampire/")
+def save_vampire(world:dict, *args) -> str:
+    q1 = request.values.get("question_1")
+
+
 
 @simple_route("/door/")
 def door(world:dict) -> str:
@@ -120,13 +143,13 @@ def exit(world:dict) -> str:
         if bool_test:
             final_items.append(item["name"])
     if len(final_items) < 2:
-        return render_template("Not_enough.html")
+        return render_template("Not_enough.html",world = world )
     if "hat" in final_items and "cape" in final_items:
-        return render_template("hat_cape_win.html")
+        return render_template("hat_cape_win.html", world = world)
     elif "hat" in final_items and "hand" in final_items:
-        return render_template("hat_hand_win.html")
+        return render_template("hat_hand_win.html", world = world )
     elif "cape" in final_items and "hand" in final_items:
-        return render_template("cape_hand_win.html")
+        return render_template("cape_hand_win.html", world = world )
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:

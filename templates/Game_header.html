@@ -3,8 +3,8 @@
 <p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
 <p> Inventory:</p>
 {% for item in world %}
-    {% if item["name"] == "inventory spaces"%}
-    You Inventory has {{ item["spots"]}} spot(s) left!
+    {% if item["name"] == "quiz attempts"%}
+    You have {{ item["attempts"]}} quiz attempts(s) left!
     {% endif %}
     {% if item["name"] == "hat" and item["own"] %}
     <p> Witch's hat</p>
@@ -17,4 +17,5 @@
 {% endif %}
 {% endfor %}
 {{ world }}
-{% block content %} {% endblock %}
+{% block content %}
+{% endblock %}

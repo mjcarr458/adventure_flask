@@ -3,8 +3,8 @@
 <h3>You have found a coffin</h3>
 <img src ="/static/vampire_coffin.jpg")><br>
     {% for item in world %}
-    {% if item["name"] == "inventory spaces" and item["spots"] > 0 %}
-    <a href ="/vampire/">Look inside the coffin and take the vampire's cape!</a>
+    {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
+    <a href ="/vampire/">Take the vampire's quiz</a>
     or
     {% endif %}
     {% endfor %}

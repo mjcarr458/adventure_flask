@@ -2,12 +2,22 @@
 {% block content %}
 <h2> You took the Witch's hat!</h2>
 <img src ="/static/Witch_hat.jpg"><br>
-<a href ="/save_witch/">Keep moving through the house!</a><br>
 <form action ="/save_witch/ ">
-    Color of hat:<br>
-   <select name = "c_value">
-   <option value ="blue" >Blue</option>
-   <option value ="red">Red</option>
+    Does the witch have green skin?:<br>
+   <select name = "question_1">
+   <option value ="Yes" >Yes</option>
+   <option value ="No">No</option><br>
    </select>
-</form>
+   <br>Does the witch have a broom stick?:<br>
+    <select name = "question_2">
+        <option value = "Yes">Yes</option>
+        <option value = "No">No</option>
+    </select>
+    <br>Is the witch wearing a purple robe?:<br>
+    <select name = "question_3">
+        <option value ="Yes">Yes</option>
+        <option value ="No">No</option>
+    </select>
+    <input type="submit" value="value"/>
+    </form>
 {% endblock %}

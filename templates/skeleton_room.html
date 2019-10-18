@@ -3,8 +3,8 @@
 <h1>You've interrupted the skeletons' dance party!</h1><br>
     <img src='/static/dancing_skeletons.gif'><br>
     {% for item in world %}
-    {% if item["name"] == "inventory spaces" and item["spots"] > 0 %}
-    <a href="/skeleton_party/">Join in on the party!</a>
+    {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
+    <a href="/skeleton_party/">Take the skeleton quiz!</a>
     or
     {% endif %}
     {% endfor %}
