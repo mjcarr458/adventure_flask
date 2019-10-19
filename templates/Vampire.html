@@ -3,20 +3,28 @@
 <h1> A vampire jumped out!</h1>
 <h2> You grabbed the vampire's cape!</h2><br>
 <img src = "/static/vampire.jpg"><br>
-<form action ="/save_vampire/"> </form>
+<form action ="/save_vampire/">
+    </br>What's a vampire's favorite type of dog?<br>
     <select name = "question_1">
-    <option value = "hold"> hold</option>
-    <option value = "hold"> hold</option>
-    <option value = "hold"> hold</option>
+   <option disabled selected value>Pick an answer!</option>
+    <option value = "'Blood' hound!"> Blood hound</option>
+    <option value = "Corgi"> Corgi</option>
+    <option value = "Golden Retriever"> Golden Retriever</option>
     </select>
+   <br> <br>What do you get if you cross a vampire with a laptop?<br>
     <select name = "question_2">
-    <option value = "hold"> hold</option>
-    <option value = "hold"> hold</option>
-    <option value = "hold"> hold</option>
+   <option disabled selected value>Pick an answer!</option>
+    <option value = "A spooky monster"> A spooky monster</option>
+    <option value = "Love at first 'byte'!"> Love at first 'byte'</option>
+    <option value = "A strange potion"> A strange potion</option>
     </select>
+    <br><br>Why did the vampire torture his victims with music?<br>
     <select name = "question_3">
-    <option value = "hold">hold</option>
-    <option value = "hold">hold</option>
-    <option value = "hold">hold</option>
+        <option disabled selected value>Pick an answer!</option>
+        <option value = "Because he was confused">Because he was confused</option>
+    <option value = "Because his Bach was worse than his bite!">Because his Bach was worse than his bite!</option>
+    <option value = "Because he got tired">Because he got tired</option>
     </select>
+   <br><br> <input type="submit" value = "value"/>
+    </form>
 {% endblock %}

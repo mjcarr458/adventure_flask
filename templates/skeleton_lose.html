@@ -1,6 +1,10 @@
 {% extends "Game_header.html" %}
 {% block content %}
-<h1>You loss the skeleton's quiz!</h1>
-<a href = "/skeleton_party/">Do you want to try again?</a><br>
+<h1>You loss the skeleton's quiz!</h1><br>
+{% for item in world %}
+    {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
+        <a href = "/skeleton_party/">Do you want to try again?</a><br>
+    {% endif %}
+    {% endfor %}
     <a href = "/vampire_coffin/">Keep going through the haunted house?</a>
 {% endblock %}

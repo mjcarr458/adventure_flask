@@ -1,6 +1,6 @@
 {% extends "Game_header.html" %}
 {% block content %}
-<h1>Sorry you didn't pass the witch's quiz!</h1>
+<h1>Sorry you didn't pass the witch's quiz!</h1><br>
 {% for item in world %}
 {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
     <a href ="/witch_hat/">Do you want to try to take the quiz again?</a><br>

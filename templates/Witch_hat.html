@@ -3,21 +3,27 @@
 <h2> You took the Witch's hat!</h2>
 <img src ="/static/Witch_hat.jpg"><br>
 <form action ="/save_witch/ ">
-    Does the witch have green skin?:<br>
+    <br>Why did they witches' team lose the baseball game?:<br>
    <select name = "question_1">
-   <option value ="Yes" >Yes</option>
-   <option value ="No">No</option><br>
+   <option disabled selected value >Pick an answer! </option>
+   <option value ="Their bats flew away!">Their bats flew away!</option>
+       <option value="They just weren't good">They just weren't good</option>
+       <option value="They other team was way better">The other team was way better</option>
    </select>
-   <br>Does the witch have a broom stick?:<br>
+   <br><br>What do you call two witches who live together?:<br>
     <select name = "question_2">
-        <option value = "Yes">Yes</option>
-        <option value = "No">No</option>
+        <option disabled selected value> Pick an answer!</option>
+        <option value = "Sisters"> Sisters</option>
+        <option value = "Best friends">Best friends</option>
+        <option value = "Broom mates!"> Broom mates</option>
     </select>
-    <br>Is the witch wearing a purple robe?:<br>
+    <br><br>What do witches in Australia ride?:<br>
     <select name = "question_3">
-        <option value ="Yes">Yes</option>
-        <option value ="No">No</option>
+        <option disabled selected value> Pick an answer!</option>
+        <option value ="A broom-erang!">A broom-erang!</option>
+        <option value = "A train">A train</option>
+        <option value ="A car"> A car</option>
     </select>
-    <input type="submit" value="value"/>
+    <br><br><input type="submit" value="Submit!"/>
     </form>
 {% endblock %}

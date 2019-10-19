@@ -7,6 +7,14 @@ GAME_HEADER = """
 name = """
 """
 
+def attempt_check(world:dict)-> str:
+    print("test")
+    for item in world:
+        print("test2")
+        if item["name"] == "quiz attempts" and item["attempts"] == 0:
+            print(item["attempts"])
+            return render_template("Exit.html", world = world)
+    return
 
 @simple_route('/')
 def hello(world: dict) -> str:
@@ -52,6 +60,7 @@ def hat(world: dict) -> str:
             o_spots = item.get("attempts")
             n_spots = o_spots - 1
             item["attempts"] = n_spots
+    attempt_check(world)
     return render_template("witch_hat.html", world = world)
 
 @simple_route("/save_witch/")
@@ -64,13 +73,15 @@ def witch_save(world: dict, *args)->str:
             item["question 1"] = q1
             item["question 2"] = q2
             item["question 3"] = q3
-    if q1 == "Yes" and q2 == "Yes" and q3 == "No":
-        for item in world:
-            if item["name"] == "hat":
-                item["own"] = True
-        return render_template("witch_win.html", world = world)
-    else:
-        return render_template("witch_lose.html", world = world)
+    for item in world:
+        if item["name"] == "witch answers":
+            if q1 == item["answer 1"] and q2 == item["answer 2"] and q3 == item["answer 3"]:
+                for item in world:
+                    if item["name"] == "hat":
+                        item["own"] = True
+                return render_template("witch_win.html", world = world)
+            else:
+                return render_template("witch_lose.html", world = world)
 
 
 @simple_route('/skeleton_room/')
@@ -92,13 +103,20 @@ def save_skeleton(world:dict, *args) -> str:
     q1 = request.values.get("question_1")
     q2 = request.values.get("question_2")
     q3 = request.values.get("question_3")
-    if q1 == "Because they don't have any guts!" and q2 == "Sherlock Bones!" and q3 == "Spare 'ribs'!":
-        for item in world:
-            if item["name"] == "hand":
-                item["own"] = True
-        return render_template("skeleton_win.html",world = world)
-    else:
-        return render_template("skeleton_lose.html", world = world)
+    for item in world:
+        if item["name"] == "skeleton quiz":
+            item["question 1"] = q1
+            item["question 2"] = q2
+            item["question 3"] = q3
+    for item in world:
+        if item["name"] == "skeleton answers":
+            if q1 == item["answer 1"] and q2 == item["answer 2"] and q3 == item["answer 3"]:
+                for item in world:
+                    if item["name"] == "hand":
+                        item["own"] = True
+                return render_template("skeleton_win.html",world = world)
+            else:
+                return render_template("skeleton_lose.html", world = world)
 
 
 
@@ -111,20 +129,31 @@ def vampire_coffin(world:dict) -> str:
 @simple_route("/vampire/")
 def vampire(world:dict) -> str:
     for item in world:
-        if item["name"] == "inventory spaces":
-            o_spots = item.get("spots")
+        if item["name"] == "quiz attempts":
+            o_spots = item.get("attempts")
             n_spots = o_spots - 1
-            item["spots"] = n_spots
-    for item in world:
-        if item["name"] == "cape":
-            item["own"] = True
+            item["attempts"] = n_spots
     return render_template("Vampire.html", world = world)
 
 @simple_route("/save_vampire/")
 def save_vampire(world:dict, *args) -> str:
     q1 = request.values.get("question_1")
-
-
+    q2 = request.values.get("question_2")
+    q3 = request.values.get("question_3")
+    for item in world:
+        if item["name"] == "vampire quiz":
+            item["question 1"] = q1
+            item["question 2"] = q2
+            item["question 3"] = q3
+    for item in world:
+        if item["name"] == "vampire answers":
+            if q1 == item["answer 1"] and q2 == item["answer 2"] and q3 == item["answer 3"]:
+                for item in world:
+                    if item["name"] == "cape":
+                        item["own"] = True
+                return render_template("vampire_win.html")
+            else:
+                return render_template("vampire_lose.html")
 
 @simple_route("/door/")
 def door(world:dict) -> str:

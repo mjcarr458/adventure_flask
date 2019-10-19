@@ -19,7 +19,14 @@ INITIAL_WORLD = \
     {"name": "cape", "own": False},
     {"name": "hat", "own": False},
     {"name": "hand", "own": False},
-    {"name": "witch quiz", "question 1": None,"question 2": None, "question 3": None}
+    {"name": "witch quiz", "question 1": None,"question 2": None, "question 3": None},
+    {"name": "skeleton quiz", "question 1": None, "question 2" : None, "question 3": None},
+    {"name": "vampire quiz", "question 1": None, "question 2": None, "question 3": None},
+    {"name": "witch answers", "answer 1": "Their bats flew away!", "answer 2": "Broom mates!", "answer 3": "A broom-erang!"},
+    {"name": "skeleton answers", "answer 1": "Because they don't have any guts!", "answer 2": "Sherlock Bones!","answer 3": "Spare 'ribs'!"},
+    {"name": "vampire answers", "answer 1": "'Blood' hound!", "answer 2": "Love at first 'byte'", "answer 3": "Because his Bach was worse than his bite!"}
+
+
 ]
 
 
