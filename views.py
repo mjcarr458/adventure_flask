@@ -6,6 +6,13 @@ GAME_HEADER = """
 """
 name = """
 """
+def subtract_attempt(world:dict)-> str:
+    for item in world:
+        if item["name"] == "quiz attempts":
+            o_attempts = item["attempts"]
+            n_attempts = o_attempts - 1
+            item["attempts"] = n_attempts
+        return world
 
 def attempt_check(world:dict)-> str:
     for item in world:
@@ -52,11 +59,7 @@ def witch(world: dict) -> str:
 
 @simple_route("/witch_hat/")
 def hat(world: dict) -> str:
-    for item in world:
-        if item["name"] == "quiz attempts":
-            o_spots = item.get("attempts")
-            n_spots = o_spots - 1
-            item["attempts"] = n_spots
+    subtract_attempt(world)
     return render_template("witch_hat.html", world = world)
 
 @simple_route("/save_witch/")
@@ -89,11 +92,7 @@ def room_2(world:dict, *args) -> str:
 
 @simple_route("/skeleton_party/")
 def dance_party(world:dict, *args) -> str:
-    for item in world:
-        if item["name"] == "quiz attempts":
-            o_spots = item.get('attempts')
-            n_spots = o_spots - 1
-            item["attempts"] = n_spots
+    subtract_attempt(world)
     return render_template("skeleton_party.html", world = world)
 
 @simple_route("/save_skeleton/")
@@ -130,11 +129,7 @@ def vampire_coffin(world:dict) -> str:
 
 @simple_route("/vampire/")
 def vampire(world:dict) -> str:
-    for item in world:
-        if item["name"] == "quiz attempts":
-            o_spots = item.get("attempts")
-            n_spots = o_spots - 1
-            item["attempts"] = n_spots
+    subtract_attempt(world)
     return render_template("Vampire.html", world = world)
 
 @simple_route("/save_vampire/")
