@@ -162,14 +162,14 @@ def ghost(world:dict) -> str:
     return render_template("Ghost.html", world = world)
 
 @simple_route("/exit/")
-def exit(world:dict) -> str:
+def exit(world:dict, *args) -> str:
     final_items = []
     for item in world:
         bool_test = item.get("own")
         if bool_test:
             final_items.append(item["name"])
     if len(final_items) == 3:
-        return render_template("collect_all.html")
+        return render_template("collect_all.html", world = world)
     if len(final_items) < 2:
         return render_template("Not_enough.html",world = world )
     if "hat" in final_items and "cape" in final_items:

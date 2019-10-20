@@ -1,1 +1,76 @@
-{{ world[10]["name"]}}
+{% extends "Game_header.html" %}
+{% block content %}
+<table class = "table">
+        <tr>
+            Witch
+        </tr>
+<tr>
+    <td> Question</td>
+    <td>{{ world[10]["question 1"] }}</td>
+    <td>{{ world[10]["question 2"]}}</td>
+    <td>{{ world[10]["question 3"]}}</td>
+</tr>
+<tr>
+    <td> Your Answers</td>
+    <td> {{ world[4]["question 1"]}}</td>
+    <td>{{ world[4]["question 2"] }}</td>
+    <td>{{ world[4]["question 3"] }}</td>
+</tr>
+<tr>
+    <td>Correct Answers</td>
+    <td>{{ world[7]["answer 1"]}}</td>
+    <td>{{ world[7]["answer 2"] }}</td>
+    <td>{{ world[7]["answer 3"] }}</td>
+</tr>
+</table>
+    <br><br>
+
+
+    <table class = "table">
+        <tr>
+            Skeleton
+        </tr>
+<tr>
+    <td> Question</td>
+    <td>{{ world[11]["question 1"] }}</td>
+    <td>{{ world[11]["question 2"]}}</td>
+    <td>{{ world[11]["question 3"]}}</td>
+</tr>
+<tr>
+    <td> Your Answers</td>
+    <td> {{ world[5]["question 1"]}}</td>
+    <td>{{ world[5]["question 2"] }}</td>
+    <td>{{ world[5]["question 3"] }}</td>
+</tr>
+<tr>
+    <td>Correct Answers</td>
+    <td>{{ world[8]["answer 1"]}}</td>
+    <td>{{ world[8]["answer 2"] }}</td>
+    <td>{{ world[8]["answer 3"] }}</td>
+</tr>
+</table>
+    <br><br>
+    <table class = "table">
+        <tr>
+            Skeleton
+        </tr>
+<tr>
+    <td> Question</td>
+    <td>{{ world[12]["question 1"] }}</td>
+    <td>{{ world[12]["question 2"]}}</td>
+    <td>{{ world[12]["question 3"]}}</td>
+</tr>
+<tr>
+    <td> Your Answers</td>
+    <td> {{ world[6]["question 1"]}}</td>
+    <td>{{ world[6]["question 2"] }}</td>
+    <td>{{ world[6]["question 3"] }}</td>
+</tr>
+<tr>
+    <td>Correct Answers</td>
+    <td>{{ world[9]["answer 1"]}}</td>
+    <td>{{ world[9]["answer 2"] }}</td>
+    <td>{{ world[9]["answer 3"] }}</td>
+</tr>
+</table>
+{%endblock%}
