@@ -8,13 +8,10 @@ name = """
 """
 
 def attempt_check(world:dict)-> str:
-    print("test")
     for item in world:
-        print("test2")
         if item["name"] == "quiz attempts" and item["attempts"] == 0:
-            print(item["attempts"])
-            return render_template("Exit.html", world = world)
-    return
+            return True
+    return False
 
 @simple_route('/')
 def hello(world: dict) -> str:
@@ -60,7 +57,6 @@ def hat(world: dict) -> str:
             o_spots = item.get("attempts")
             n_spots = o_spots - 1
             item["attempts"] = n_spots
-    attempt_check(world)
     return render_template("witch_hat.html", world = world)
 
 @simple_route("/save_witch/")
@@ -86,6 +82,8 @@ def witch_save(world: dict, *args)->str:
 
 @simple_route('/skeleton_room/')
 def room_2(world:dict, *args) -> str:
+    if attempt_check(world):
+        return render_template("out_attempts.html", world=world)
     return render_template("skeleton_room.html", world = world)
 
 
@@ -123,6 +121,10 @@ def save_skeleton(world:dict, *args) -> str:
 
 @simple_route("/vampire_coffin/")
 def vampire_coffin(world:dict) -> str:
+    for item in world:
+        if item["name"] == "cape" and item["own"] == False:
+            if attempt_check(world):
+                return render_template("out_attempts.html", world=world)
     return render_template("Vampire_coffin.html", world = world)
 
 
