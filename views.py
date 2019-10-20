@@ -128,7 +128,7 @@ def vampire_coffin(world:dict) -> str:
 
 
 @simple_route("/vampire/")
-def vampire(world:dict) -> str:
+def vampire(world:dict, *args) -> str:
     subtract_attempt(world)
     return render_template("Vampire.html", world = world)
 
@@ -148,9 +148,9 @@ def save_vampire(world:dict, *args) -> str:
                 for item in world:
                     if item["name"] == "cape":
                         item["own"] = True
-                return render_template("vampire_win.html")
+                return render_template("vampire_win.html", world = world)
             else:
-                return render_template("vampire_lose.html")
+                return render_template("vampire_lose.html", world = world)
 
 @simple_route("/door/")
 def door(world:dict) -> str:
@@ -168,6 +168,8 @@ def exit(world:dict) -> str:
         bool_test = item.get("own")
         if bool_test:
             final_items.append(item["name"])
+    if len(final_items) == 3:
+        return render_template("collect_all.html")
     if len(final_items) < 2:
         return render_template("Not_enough.html",world = world )
     if "hat" in final_items and "cape" in final_items:
