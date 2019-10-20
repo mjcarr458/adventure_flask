@@ -178,6 +178,9 @@ def exit(world:dict) -> str:
         return render_template("hat_hand_win.html", world = world )
     elif "cape" in final_items and "hand" in final_items:
         return render_template("cape_hand_win.html", world = world )
+@simple_route("/result_table/")
+def results(world:dict, *args)-> str:
+    return render_template("result_table.html", world =world)
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:

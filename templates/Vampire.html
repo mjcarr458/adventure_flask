@@ -1,30 +1,29 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h1> A vampire jumped out!</h1>
-<h2> You grabbed the vampire's cape!</h2><br>
+<h1> A vampire jumped out!</h1><br>
 <img src = "/static/vampire.jpg"><br>
 <form action ="/save_vampire/">
-    </br>What's a vampire's favorite type of dog?<br>
+    </br>{{ world[12]["question 1"] }}<br>
     <select name = "question_1">
    <option disabled selected value>Pick an answer!</option>
     <option value = "'Blood' hound!"> 'Blood' hound</option>
     <option value = "Corgi"> Corgi</option>
     <option value = "Golden Retriever"> Golden Retriever</option>
     </select>
-   <br> <br>What do you get if you cross a vampire with a laptop?<br>
+   <br> <br>{{ world[12]["question 2"]}}<br>
     <select name = "question_2">
    <option disabled selected value>Pick an answer!</option>
     <option value = "A spooky monster"> A spooky monster</option>
     <option value = "Love at first 'byte'!"> Love at first 'byte'!</option>
     <option value = "A strange potion"> A strange potion</option>
     </select>
-    <br><br>Why did the vampire torture his victims with music?<br>
+    <br><br>{{ world[12]["question 3"]}}<br>
     <select name = "question_3">
         <option disabled selected value>Pick an answer!</option>
         <option value = "Because he was confused">Because he was confused</option>
     <option value = "Because his Bach was worse than his bite!">Because his Bach was worse than his bite!</option>
     <option value = "Because he got tired">Because he got tired</option>
     </select>
-   <br><br> <input type="submit" value = "value"/>
+   <br><br> <input type="submit" value = "Submit!"/>
     </form>
 {% endblock %}

@@ -3,21 +3,21 @@
 <h2> You found the skeleton hand!</h2>
 <img src='/static/skeleton_hand.jpeg'><br>
 <form action = "/save_skeleton/">
-    <br>Why aren't skeletons brave?:<br>
+    {{ world[11]["question 1"] }}<br>
     <select name = "question_1">
      <option disabled selected value>Pick an answer!</option>
       <option value = "Because they don't have any guts!">Because they don't have any guts!</option>
       <option value = "Because they are too tired">Because they are too tired</option>
       <option value = "Because they get lost easily"> Because they get lost easily</option>
       </select>
-   <br><br>Who was the most famous skeleton detective?:<br>
+   <br><br>{{ world[11]["question 2"] }}<br>
     <select name = "question_2">
         <option disabled selected value> Pick an answer!</option>
         <option value = "Mary">Mary</option>
         <option value = "Sherlock Bones!">Sherlock Bones!</option>
         <option value = "Bob">Bob</option>
     </select>
-    <br><br> What is a skeleton's favorite food?:<br>
+    <br><br>{{ world[11]["question 3"] }}<br>
     <select name = "question_3">
         <option disabled selected value> Pick an answer!</option>
         <option value = "Spare 'ribs'!">Spare 'ribs'!</option>
