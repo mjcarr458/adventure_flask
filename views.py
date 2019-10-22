@@ -60,7 +60,7 @@ def witch(world: dict) -> str:
 @simple_route("/witch_hat/")
 def hat(world: dict) -> str:
     subtract_attempt(world)
-    return render_template("witch_hat.html", world = world)
+    return render_template("Witch_hat.html", world = world)
 
 @simple_route("/save_witch/")
 def witch_save(world: dict, *args)->str:
