@@ -1,6 +1,8 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h1> Congratulations you made it out of the Haunted House! </h1>
-<img src = "/static/door_open.jpg">
+<center>
+    <h1 class="text-center"> Congratulations you made it out of the Haunted House! </h1>
+<img src = "/static/door_open.jpg"class="rounded mx-auto d-block" >
 {{ final_inventory }}
+    </center>
 {% endblock %}

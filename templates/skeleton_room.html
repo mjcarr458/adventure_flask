@@ -1,12 +1,14 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h1>You've interrupted the skeletons' dance party!</h1><br>
-    <img src='/static/dancing_skeletons.gif'><br>
+<center>
+    <h1>You've interrupted the skeletons' dance party!</h1><br>
+    <img src='/static/dancing_skeletons.gif' class="rounded mx-auto d-block"><br>
     {% for item in world %}
     {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
-    <a href="/skeleton_party/">Take the skeleton quiz!</a>
+    <a href="/skeleton_party/" class="text-decoration-none">Take the skeleton quiz!</a>
     or
     {% endif %}
     {% endfor %}
-    <a href="/vampire_coffin/">Keep walking by</a>
+    <a href="/vampire_coffin/" class="text-decoration-none">Keep walking by</a>
+</center>
 {% endblock %}

@@ -1,7 +1,11 @@
 {% extends"Game_header.html" %}
+{% block head %}
+{% endblock %}
 {% block content %}
-<h1> You have entered the witch's lair</h1><br>
-    <img src='/static/witch_lair.jpg'><br>
-    <a href="/witch/">Do you want to keep investigating the room?</a><br>
-    <a href="/skeleton_room/">Do you want to move into the next room?</a>
+    <center>
+    <h1> You have entered the witch's lair</h1><br>
+    <img src='/static/witch_lair.jpg'class="rounded mx-auto d-block"><br>
+    <a href="/witch/"class="text-decoration-none">Do you want to keep investigating the room?</a><br>
+    <a href="/skeleton_room/"class="text-decoration-none">Do you want to move into the next room?</a>
+</center>
 {% endblock %}

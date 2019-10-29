@@ -1,7 +1,10 @@
 {% extends"Game_header.html" %}
+{% block head %}
+{% endblock %}
 {% block content %}
-<br>You are currently standing in front of the haunted house.<br>
-    <img src='/static/house_front.png'><br>
-    <a href="/room_1/">Click here to enter if you dare!</a><br>
-    <a href="/result_table/">view result</a>
+    <center>
+    <br><p class="text-center">You are currently standing in front of the haunted house.</p><br>
+    <img src='/static/house_front.png' class="rounded mx-auto d-block"><br>
+    <a href="/room_1/" class="text-decoration-none">Click here to enter if you dare!</a><br>
+</center>
 {% endblock %}

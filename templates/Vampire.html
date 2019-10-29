@@ -1,7 +1,8 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h1> A vampire jumped out!</h1><br>
-<img src = "/static/vampire.jpg"><br>
+<center>
+    <h1> A vampire jumped out!</h1><br>
+<img src = "/static/vampire.jpg" class="rounded mx-auto d-block"><br>
 <form action ="/save_vampire/">
     </br>{{ world[12]["question 1"] }}<br>
     <select name = "question_1">
@@ -26,4 +27,5 @@
     </select>
    <br><br> <input type="submit" value = "Submit!"/>
     </form>
+</center>
 {% endblock %}

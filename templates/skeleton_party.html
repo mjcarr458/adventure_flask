@@ -1,7 +1,8 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h2> You found the skeleton hand!</h2>
-<img src='/static/skeleton_hand.jpeg'><br>
+<center>
+    <h2> You found the skeleton hand!</h2>
+<img src='/static/skeleton_hand.jpeg'class="rounded mx-auto d-block" ><br>
 <form action = "/save_skeleton/">
     {{ world[11]["question 1"] }}<br>
     <select name = "question_1">
@@ -26,4 +27,5 @@
     </select>
    <br><br> <input type="submit" value = "Submit!"/>
     </form>
+</center>
 {% endblock %}

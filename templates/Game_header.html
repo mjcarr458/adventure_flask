@@ -1,23 +1,38 @@
-
-<h1>Welcome to the Haunted House!</h1>
-<p>At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
-<p> Inventory:</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href ='/static/page_style.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Creepster&display=swap" rel="stylesheet">
+    <img src = "/static/ghost2r.jpg" align = "left" width = 10% height = 10%>
+    <img src = "/static/ghost2.jpg" align = "right" width = 10% height = 10% >
+    <h1 class="text-center">Welcome to the Haunted House!</h1>
+</head>
+<body class = "page_style">
+<p class="text-center">At any time you can <a href='/reset/'>exit</a> the house if you get too scared!</p>
 {% for item in world %}
     {% if item["name"] == "quiz attempts"%}
-    You have {{ item["attempts"]}} quiz attempts(s) left!
+        <p class="text-center">You have {{ item["attempts"]}} quiz attempts(s) left!</p>
     {% endif %}
+    {% endfor %}
+<p class="text-center"> Inventory:</p>
+{% for item in world %}
     {% if item["name"] == "hat" and item["own"] %}
-    <p> Witch's hat</p>
+    <p class="text-center"> Witch's hat</p>
 {% endif %}
 {% if item["name"] == "hand" and item["own"] %}
-    <p> Skeleton's hand</p>
+    <p class="text-center"> Skeleton's hand</p>
 {% endif %}
 {% if item["name"] == "cape" and item["own"] %}
-    <p> Vampire cape</p>
+    <p class="text-center"> Vampire cape</p>
 {% endif %}
 {% endfor %}
-<link rel="stylesheet" href ='static/page_style.css'>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <br><br>
+
 {% block content %}
 {% endblock %}
+</body>
+</html>

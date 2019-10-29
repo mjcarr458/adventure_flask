@@ -1,12 +1,14 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h1> The Witch has appeared!</h1><br>
-    <img src='/static/witch.jpg'><br>
+<center>
+    <h1 class="text-center"> The Witch has appeared!</h1><br>
+    <img src='/static/witch.jpg' class="rounded mx-auto d-block"><br>
     {% for item in world %}
     {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
-    <a href="/witch_hat/">Take the Witch's Quiz!</a>
+    <a href="/witch_hat/"class="text-decoration-none">Take the Witch's Quiz!</a>
     or
     {% endif %}
     {% endfor %}
-    <a href="/skeleton_room/">Move to the next room!</a>
+    <a href="/skeleton_room/"class="text-decoration-none">Move to the next room!</a>
+</center>
 {% endblock %}

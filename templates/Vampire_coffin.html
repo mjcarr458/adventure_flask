@@ -1,12 +1,14 @@
 {% extends"Game_header.html" %}
 {% block content %}
-<h3>You have found a coffin</h3>
-<img src ="/static/vampire_coffin.jpg")><br>
+<center>
+    <h3>You have found a coffin</h3>
+<img src ="/static/vampire_coffin.jpg") class="rounded mx-auto d-block"><br>
     {% for item in world %}
     {% if item["name"] == "quiz attempts" and item["attempts"] > 0 %}
     <a href ="/vampire/">Take the vampire's quiz</a>
     or
     {% endif %}
     {% endfor %}
-<a href = "/door/">Move past it</a>
+<a href = "/door/"class="text-decoration-none">Move past it</a>
+</center>
 {% endblock %}

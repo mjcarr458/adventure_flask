@@ -1,3 +1,14 @@
-.result_table {
+.page_style {
+    border: 250px solid rgba(255,151,42,0.89);
+    font-family: 'Creepster', cursive;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.table_style{
+    text-align: left;
+    vertical-align: center;
+    padding: 25px;
+    border-collapse: collapse;
 
 }

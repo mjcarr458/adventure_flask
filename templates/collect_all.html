@@ -1,7 +1,9 @@
 {% extends "Game_header.html" %}
 {% block content %}
-<h1> Congrats you collected all of the items!</h1><br>
-    <h2> For winning you get this special halloween bag! </h2>
-    <img src = "/static/corgi_bag.jpg">
-<a href ="/result_table/" > View your results!</a>
+<center>
+    <h1 class="text-center"> Congrats you collected all of the items!</h1><br>
+    <h2 class="text-center"> For winning you get this special halloween bag! </h2>
+    <img src = "/static/corgi_bag.jpg" class="rounded mx-auto d-block">
+<a href ="/result_table/" class="text-decoration-none"> View your results!</a>
+</center>
 {% endblock %}
