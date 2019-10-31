@@ -7,6 +7,11 @@ GAME_HEADER = """
 name = """
 """
 def subtract_attempt(world:dict)-> str:
+    """
+    Subtracts one from the current amount of attempts stored in the world dictionary
+    :param world:
+    :return: world:
+    """
     for item in world:
         if item["name"] == "quiz attempts":
             o_attempts = item["attempts"]
@@ -15,6 +20,10 @@ def subtract_attempt(world:dict)-> str:
         return world
 
 def attempt_check(world:dict)-> str:
+    """
+    :param world:
+    :return: bool:
+    """
     for item in world:
         if item["name"] == "quiz attempts" and item["attempts"] == 0:
             return True
@@ -23,47 +32,51 @@ def attempt_check(world:dict)-> str:
 @simple_route('/')
 def hello(world: dict) -> str:
     """
-    The welcome screen for the game.
-
-    :param world: The current world
-    :return: The HTML to show the player
+    Initial view: Outside the Haunted House
+    :param world:
+    :return: index.html: world
     """
-    return render_template("index.html", world = world)
-    
-
-ENCOUNTER_MONSTER = """
-<!-- Curly braces let us inject values into the string -->
-You are in {}. You found a monster!<br>
-
-<!-- Image taken from site that generates random Corgi pictures-->
-<img src="http://placecorgi.com/260/180" /><br>
-    
-What is its name?
-
-<!-- Form allows you to have more text entry -->    
-<form action="/save/name/">
-    <input type="text" name="player"><br>
-    <input type="submit" value="Submit"><br>
-</form>
-"""
+    return render_template("index.html", world=world)
 
 
 @simple_route('/room_1/')
-def house(world:dict) -> str:
+def house(world: dict) -> str:
+    """
+    First room of the witch's lair
+    :param world:
+    :return: Witch_lair.html: world
+    """
     return render_template("Witch_lair.html", world = world)
 
 
 @simple_route('/witch/')
 def witch(world: dict) -> str:
+    """
+    Witch appears, option to take witch's quiz
+    :param world:
+    :return: Witch.html, world
+    """
     return render_template("Witch.html", world = world)
 
 @simple_route("/witch_hat/")
 def hat(world: dict) -> str:
+    """
+    Witch's Quiz, subtracts 1 from total attempts remaining
+    :param world:
+    :return: Witch_hat.html: world
+    """
     subtract_attempt(world)
     return render_template("Witch_hat.html", world = world)
 
 @simple_route("/save_witch/")
 def witch_save(world: dict, *args)->str:
+    """
+    Saves witch's quiz information. Determines if the user passed the quiz or not.
+    :param world:
+    :param args:
+    :return: witch-win.html: witch_lose.html: world
+    """
+
     q1 = request.values.get("question_1")
     q2 = request.values.get("question_2")
     q3 = request.values.get("question_3")
@@ -85,6 +98,12 @@ def witch_save(world: dict, *args)->str:
 
 @simple_route('/skeleton_room/')
 def room_2(world:dict, *args) -> str:
+    """
+    Checks if the player is out of attempts. Option to take skeleton quiz.
+    :param world:
+    :param args:
+    :return: out_attempts.html: skeleton_room.html: world
+    """
     if attempt_check(world):
         return render_template("out_attempts.html", world=world)
     return render_template("skeleton_room.html", world = world)
@@ -92,11 +111,24 @@ def room_2(world:dict, *args) -> str:
 
 @simple_route("/skeleton_party/")
 def dance_party(world:dict, *args) -> str:
+    """
+    Skeleton's quiz page, removes 1 from total attempts
+    :param world:
+    :param args:
+    :return: skeleton_party.html world
+    """
     subtract_attempt(world)
     return render_template("skeleton_party.html", world = world)
 
+
 @simple_route("/save_skeleton/")
 def save_skeleton(world:dict, *args) -> str:
+    """
+    Saves skeleton quiz information. Determine if player passed the quiz or not
+    :param world:
+    :param args:
+    :return: skeleton_win.html: skeleton_lose.html: world
+    """
     q1 = request.values.get("question_1")
     q2 = request.values.get("question_2")
     q3 = request.values.get("question_3")
@@ -116,10 +148,13 @@ def save_skeleton(world:dict, *args) -> str:
                 return render_template("skeleton_lose.html", world = world)
 
 
-
-
 @simple_route("/vampire_coffin/")
 def vampire_coffin(world:dict) -> str:
+    """
+    Checks if the user is out of attempts
+    :param world:
+    :return: out_attempts.html: Vampire_coffin.html: world
+    """
     for item in world:
         if item["name"] == "cape" and item["own"] == False:
             if attempt_check(world):
@@ -129,11 +164,24 @@ def vampire_coffin(world:dict) -> str:
 
 @simple_route("/vampire/")
 def vampire(world:dict, *args) -> str:
+    """
+    Vampire's quiz, calls subtract_attempt()
+    :param world:
+    :param args:
+    :return: Vampire.html: world = world
+    """
     subtract_attempt(world)
     return render_template("Vampire.html", world = world)
 
+
 @simple_route("/save_vampire/")
 def save_vampire(world:dict, *args) -> str:
+    """
+    Saves vampire quiz answers. Determines if the user passed the quiz or not.
+    :param world:
+    :param args:
+    :return:
+    """
     q1 = request.values.get("question_1")
     q2 = request.values.get("question_2")
     q3 = request.values.get("question_3")
@@ -154,15 +202,32 @@ def save_vampire(world:dict, *args) -> str:
 
 @simple_route("/door/")
 def door(world:dict) -> str:
+    """
+    Renders door.html template
+    :param world:
+    :return: Door.html: world
+    """
     return render_template("Door.html", world = world)
 
 
 @simple_route("/ghost/")
 def ghost(world:dict) -> str:
+    """
+    Renders ghost template
+    :param world:
+    :return:
+    """
     return render_template("Ghost.html", world = world)
+
 
 @simple_route("/exit/")
 def exit(world:dict, *args) -> str:
+    """
+    Determines how many prizes the user collected, displays the right award for the items collected
+    :param world:
+    :param args:
+    :return: collect_all.html: Not_enough.html: hat_cape_win.html: hat_hand_win.html: cape_hand_win.html: world
+    """
     final_items = []
     for item in world:
         bool_test = item.get("own")
@@ -178,36 +243,17 @@ def exit(world:dict, *args) -> str:
         return render_template("hat_hand_win.html", world = world )
     elif "cape" in final_items and "hand" in final_items:
         return render_template("cape_hand_win.html", world = world )
+
+
 @simple_route("/result_table/")
 def results(world:dict, *args)-> str:
+    """
+    Displays all the users final answers and correct answers in a table
+    :param world:
+    :param args:
+    :return: result_table.html: world
+    """
     return render_template("result_table.html", world =world)
 
-@simple_route('/goto/<where>/')
-def open_door(world: dict, where: str) -> str:
-    """
-    Update the player location and encounter a monster, prompting the player
-    to give them a name.
-
-    :param world: The current world
-    :param where: The new location to move to
-    :return: The HTML to show the player
-    """
-    world['location'] = where
-    return GAME_HEADER+ENCOUNTER_MONSTER.format(where)
 
 
-@simple_route("/save/name/")
-def save_name(world: dict, monsters_name: str) -> str:
-    """
-    Update the name of the monster.
-
-    :param world: The current world
-    :param monsters_name:
-    :return:
-    """
-    world['name'] = monsters_name
-
-    return GAME_HEADER+"""You are in {where}, and you are nearby {monster_name}
-    <br><br>
-    <a href='/'>Return to the start</a>
-    """.format(where=world['location'], monster_name=world['name'])
